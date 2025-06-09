@@ -35,7 +35,7 @@
   
   // プルリクエストの設定
   prConcurrentLimit: 4,
-  prHourlyLimit: 2,
+  prHourlyLimit: 4,
   
   // タイムゾーン設定（日本時間）
   timezone: "Asia/Tokyo",
