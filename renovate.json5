@@ -41,11 +41,6 @@
   timezone: "Asia/Tokyo",
   
   // Bundlerでprivateリポジトリを参照する場合の設定
-  hostRules: [
-    {
-      matchHost: "github.com",
-      hostType: "github",
-      token: "{{ secrets.RENOVATE_GITHUB_COM_TOKEN }}"
-    }
-  ],
+  // 注: GitHub Appのトークンが自動的に使用されるため、
+  // 追加のhostRules設定は不要
 }
