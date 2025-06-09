@@ -1,0 +1,24 @@
+GIT
+  remote: https://github.com/thinkami-renovate-sandbox/private-bundler-app.git
+  revision: 3f9c88616d6843badb10864ff0b4f505b084ba33
+  specs:
+    private_bundler_app (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorize (0.5.5)
+      hoe (>= 1.2.2)
+    hoe (4.2.3)
+      rake (>= 0.8, < 15.0)
+    rake (13.3.0)
+
+PLATFORMS
+  arm64-darwin-24
+
+DEPENDENCIES
+  colorize (= 0.5.5)
+  private_bundler_app!
+
+BUNDLED WITH
+   2.4.19
