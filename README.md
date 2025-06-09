@@ -1,0 +1,1 @@
+# main-app-with-self-hosted-renovate
