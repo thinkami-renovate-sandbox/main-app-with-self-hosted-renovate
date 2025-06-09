@@ -38,6 +38,16 @@ jobs:
       - name: Setup credentials to access github using app-token
         run: |
           git config --global url."https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/".insteadOf https://github.com/
+      - name: Setup Git Config
+        run: |
+          # グローバルGit設定を作成
+          mkdir -p /tmp/git-config
+          cat > /tmp/git-config/.gitconfig << EOF
+          [url "https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/"]
+            insteadOf = https://github.com/
+          [url "https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/"]
+            insteadOf = git@github.com:
+          EOF
       - name: Self-hosted Renovate
         # https://github.com/renovatebot/github-action
         uses: renovatebot/github-action@v42.0.5
@@ -46,6 +56,7 @@ jobs:
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun || 'false' }}
           RENOVATE_REPOSITORIES: ${{ github.repository }}
           RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
+          HOME: /tmp/git-config  # Gitがこの.gitconfigを読むようにする
           BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
           # Bundlerがprivateリポジトリにアクセスできるようにする
           #GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
