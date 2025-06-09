@@ -42,6 +42,8 @@ jobs:
           LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun || 'false' }}
           RENOVATE_REPOSITORIES: ${{ github.repository }}
+          # Bundlerがprivateリポジトリにアクセスできるようにする
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         with:
           configurationFile: renovate.json5
           token: ${{ steps.generate-token.outputs.token }}
