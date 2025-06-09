@@ -66,16 +66,16 @@ jobs:
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun || 'false' }}
           RENOVATE_REPOSITORIES: ${{ github.repository }}
           RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
-          HOME: /tmp/git-config  # Gitがこの.gitconfigを読むようにする
-          BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
+          RENOVATE_HOME: /tmp/git-config  # Gitがこの.gitconfigを読むようにする
+          RENOVATE_BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
           # Bundlerがprivateリポジトリにアクセスできるようにする
           #GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           # Git設定を環境変数として渡す
-          GIT_CONFIG_COUNT: "2"
-          GIT_CONFIG_KEY_0: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
-          GIT_CONFIG_VALUE_0: "https://github.com/"
-          GIT_CONFIG_KEY_1: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
-          GIT_CONFIG_VALUE_1: "git@github.com:"
+          RENOVATE_GIT_CONFIG_COUNT: "2"
+          RENOVATE_GIT_CONFIG_KEY_0: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
+          RENOVATE_GIT_CONFIG_VALUE_0: "https://github.com/"
+          RENOVATE_GIT_CONFIG_KEY_1: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
+          RENOVATE_GIT_CONFIG_VALUE_1: "git@github.com:"
         with:
         #   # configurationFile: renovate.json5
           token: 'x-access-token:${{ steps.generate-token.outputs.token }}'
