@@ -48,6 +48,16 @@ jobs:
           [url "https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/"]
             insteadOf = git@github.com:
           EOF
+
+      - name: Debug Git Config
+        run: |
+          echo "=== Current git config ==="
+          git config --list --show-origin
+          echo "=== .gitconfig content ==="
+          cat /tmp/git-config/.gitconfig || echo "File not found"
+          echo "=== Testing git with token ==="
+          git ls-remote https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/${{ github.repository }}.git HEAD || echo "Failed to access repo"
+
       - name: Self-hosted Renovate
         # https://github.com/renovatebot/github-action
         uses: renovatebot/github-action@v42.0.5
@@ -60,6 +70,12 @@ jobs:
           BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
           # Bundlerがprivateリポジトリにアクセスできるようにする
           #GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          # Git設定を環境変数として渡す
+          GIT_CONFIG_COUNT: "2"
+          GIT_CONFIG_KEY_0: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
+          GIT_CONFIG_VALUE_0: "https://github.com/"
+          GIT_CONFIG_KEY_1: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
+          GIT_CONFIG_VALUE_1: "git@github.com:"
         with:
         #   # configurationFile: renovate.json5
           token: 'x-access-token:${{ steps.generate-token.outputs.token }}'
