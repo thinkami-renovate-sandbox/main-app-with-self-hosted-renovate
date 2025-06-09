@@ -1,0 +1,45 @@
+name: Renovate
+on:
+  # 手動実行
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        description: 'Dry Run'
+        type: boolean
+        required: false
+        default: false
+      logLevel:
+        description: 'Log Level'
+        type: choice
+        required: false
+        default: 'info'
+        options:
+          - debug
+          - info
+          - warn
+          - error
+
+jobs:
+  renovate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate token
+        id: generate-token
+        # https://github.com/actions/create-github-app-token
+        uses: actions/create-github-app-token@v2.0.6
+        with:
+          app-id: ${{ secrets.RENOVATE_APP_ID }}
+          private-key: ${{ secrets.RENOVATE_APP_PRIVATE_KEY }}
+
+      - name: Self-hosted Renovate
+        # https://github.com/renovatebot/github-action
+        uses: renovatebot/github-action@v42.0.5
+        env:
+          LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
+          RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun || 'false' }}
+        with:
+          configurationFile: renovate.json5
+          token: ${{ steps.generate-token.outputs.token }}

@@ -1,0 +1,23 @@
+{
+  "name": "main-app-with-renovate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkami-renovate-sandbox/main-app-with-renovate.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thinkami-renovate-sandbox/main-app-with-renovate/issues"
+  },
+  "homepage": "https://github.com/thinkami-renovate-sandbox/main-app-with-renovate#readme",
+  "description": "",
+  "dependencies": {
+    "private_npm_lib": "https://github.com/thinkami-renovate-sandbox/private-npm-app.git",
+    "uuid": "1.4.0"
+  }
+}
