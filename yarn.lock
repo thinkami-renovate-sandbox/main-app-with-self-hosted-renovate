@@ -6,7 +6,7 @@
   version "1.0.0"
   resolved "https://github.com/thinkami-renovate-sandbox/private-npm-app.git#1b57ff73f0a4b877c1e9fbcd204dc98fe810bf1b"
 
-uuid@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-1.4.0.tgz#d0d3b84ab56902e99ff952f2a17aa3986d44d36f"
-  integrity sha512-IzR48RgxTHa2bbD4KtzkfO11HrwBBpN536a3D1NRBBNKMCMbHjGHQRzhCuS1cMMptTagWTLIMVYCG5SP0UyEfg==
+uuid@1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-1.4.2.tgz#453019f686966a6df83cdc5244e7c990ecc332fc"
+  integrity sha512-woV5Ei+GBJyrqMXt0mJ9p8/I+47LYKp/4urH76FNTMjl22EhLPz1tNrQufTsrFf/PYV/7ctSZYAK7fKPWQKg+Q==
