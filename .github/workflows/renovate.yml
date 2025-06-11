@@ -34,30 +34,6 @@ jobs:
           app-id: ${{ secrets.RENOVATE_APP_ID }}
           private-key: ${{ secrets.RENOVATE_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-
-      # - name: Setup credentials to access github using app-token
-      #   run: |
-      #     git config --global url."https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/".insteadOf https://github.com/
-      # - name: Setup Git Config
-      #   run: |
-      #     # グローバルGit設定を作成
-      #     mkdir -p /tmp/git-config
-      #     cat > /tmp/git-config/.gitconfig << EOF
-      #     [url "https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/"]
-      #       insteadOf = https://github.com/
-      #     [url "https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/"]
-      #       insteadOf = git@github.com:
-      #     EOF
-
-      # - name: Debug Git Config
-      #   run: |
-      #     echo "=== Current git config ==="
-      #     git config --list --show-origin
-      #     echo "=== .gitconfig content ==="
-      #     cat /tmp/git-config/.gitconfig || echo "File not found"
-      #     echo "=== Testing git with token ==="
-      #     git ls-remote https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/${{ github.repository }}.git HEAD || echo "Failed to access repo"
-
       - name: Self-hosted Renovate
         # https://github.com/renovatebot/github-action
         uses: renovatebot/github-action@v42.0.5
@@ -65,19 +41,7 @@ jobs:
           LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun || 'false' }}
           RENOVATE_REPOSITORIES: ${{ github.repository }}
-          # RENOVATE_HOST_RULES: '[{"matchHost":"github.com","token":"${{ steps.generate-token.outputs.token }}","hostType":"github"}]'
-          # RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
-          # RENOVATE_HOME: /tmp/git-config  # Gitがこの.gitconfigを読むようにする
           BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
-          # RENOVATE_BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
-          # Bundlerがprivateリポジトリにアクセスできるようにする
-          #GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-          # # Git設定を環境変数として渡す
-          # RENOVATE_GIT_CONFIG_COUNT: "2"
-          # RENOVATE_GIT_CONFIG_KEY_0: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
-          # RENOVATE_GIT_CONFIG_VALUE_0: "https://github.com/"
-          # RENOVATE_GIT_CONFIG_KEY_1: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
-          # RENOVATE_GIT_CONFIG_VALUE_1: "git@github.com:"
         with:
           configurationFile: config.js
           token: ${{ steps.generate-token.outputs.token }}
