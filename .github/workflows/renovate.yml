@@ -80,3 +80,4 @@ jobs:
         with:
         #   # configurationFile: renovate.json5
           token: ${{ steps.generate-token.outputs.token }}
+          env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN|BUNDLE_GITHUB__COM)$"
