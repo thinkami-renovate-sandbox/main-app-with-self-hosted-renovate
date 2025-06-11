@@ -69,6 +69,7 @@ jobs:
           # RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
           # RENOVATE_HOME: /tmp/git-config  # Gitがこの.gitconfigを読むようにする
           BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
+          RENOVATE_BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
           # Bundlerがprivateリポジトリにアクセスできるようにする
           #GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           # # Git設定を環境変数として渡す
