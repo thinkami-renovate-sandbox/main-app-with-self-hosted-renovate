@@ -65,11 +65,11 @@ jobs:
           LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun || 'false' }}
           RENOVATE_REPOSITORIES: ${{ github.repository }}
-          RENOVATE_HOST_RULES: '[{"matchHost":"github.com","token":"${{ steps.generate-token.outputs.token }}","hostType":"github"}]'
-          RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
+          # RENOVATE_HOST_RULES: '[{"matchHost":"github.com","token":"${{ steps.generate-token.outputs.token }}","hostType":"github"}]'
+          # RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
           # RENOVATE_HOME: /tmp/git-config  # Gitがこの.gitconfigを読むようにする
           BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
-          RENOVATE_BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
+          # RENOVATE_BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
           # Bundlerがprivateリポジトリにアクセスできるようにする
           #GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           # # Git設定を環境変数として渡す

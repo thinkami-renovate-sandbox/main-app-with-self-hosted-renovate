@@ -4,7 +4,7 @@ module.exports = {
   
   // GitHub Actionsで実行する際の必須設定
   platform: "github",
-  token: process.env.RENOVATE_TOKEN,
+  // renovate.ymlではtokenはwithセクションで指定されているため、環境変数は不要
   
   // リポジトリの設定（RENOVATE_REPOSITORIESから取得）
   repositories: process.env.RENOVATE_REPOSITORIES ? [process.env.RENOVATE_REPOSITORIES] : ["owner/repo"],
@@ -68,20 +68,9 @@ module.exports = {
   // キャッシュ設定
   cacheDir: "/tmp/renovate-cache",
   
-  // ホストルール設定（renovate.ymlのREVONATE_HOST_RULESから）
-  hostRules: process.env.RENOVATE_HOST_RULES ? 
-    JSON.parse(process.env.RENOVATE_HOST_RULES) : 
-    [
-      {
-        matchHost: "github.com",
-        hostType: "github",
-        token: process.env.RENOVATE_TOKEN
-      }
-    ],
-  
   // Bundler用の環境変数設定
   env: {
-    BUNDLE_GITHUB__COM: process.env.BUNDLE_GITHUB__COM || process.env.RENOVATE_BUNDLE_GITHUB__COM,
+    BUNDLE_GITHUB__COM: process.env.BUNDLE_GITHUB__COM,
   },
   
   // BundlerがGit認証を使用できるようにする（renovate.json5から）
