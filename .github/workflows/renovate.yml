@@ -65,8 +65,8 @@ jobs:
           LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun || 'false' }}
           RENOVATE_REPOSITORIES: ${{ github.repository }}
-          RENOVATE_HOST_RULES: '[{"matchHost":"github.com","token":"${{ steps.app-token.outputs.token }}","hostType":"github"}]'
-          # RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
+          RENOVATE_HOST_RULES: '[{"matchHost":"github.com","token":"${{ steps.generate-token.outputs.token }}","hostType":"github"}]'
+          RENOVATE_TOKEN: ${{ steps.generate-token.outputs.token }}
           # RENOVATE_HOME: /tmp/git-config  # Gitがこの.gitconfigを読むようにする
           BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
           RENOVATE_BUNDLE_GITHUB__COM: "x-access-token:${{ steps.generate-token.outputs.token }}"
@@ -79,6 +79,6 @@ jobs:
           # RENOVATE_GIT_CONFIG_KEY_1: "url.https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/.insteadOf"
           # RENOVATE_GIT_CONFIG_VALUE_1: "git@github.com:"
         with:
-        #   # configurationFile: renovate.json5
+          configurationFile: config.js
           token: ${{ steps.generate-token.outputs.token }}
           env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN|BUNDLE_GITHUB__COM)$"
