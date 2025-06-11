@@ -3,11 +3,11 @@ module.exports = {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   
   // GitHub Actionsで実行する際の必須設定
-  platform: "github",
+  // platform: "github",
   // renovate.ymlではtokenはwithセクションで指定されているため、環境変数は不要
   
   // リポジトリの設定（RENOVATE_REPOSITORIESから取得）
-  repositories: process.env.RENOVATE_REPOSITORIES ? [process.env.RENOVATE_REPOSITORIES] : ["owner/repo"],
+  // repositories: process.env.RENOVATE_REPOSITORIES ? [process.env.RENOVATE_REPOSITORIES] : ["owner/repo"],
   
   // // すべて実行する
   // mode: "full",
@@ -48,7 +48,9 @@ module.exports = {
   // timezone: "Asia/Tokyo",
   
   // Self-hosted runner用の追加設定
-  onboarding: true,
+  // onboarding: true,
+  // renovate.json5 があれば、そちらの設定も利用する
+  // https://docs.renovatebot.com/self-hosted-configuration/#requireconfig
   requireConfig: "optional",
   
   // // ログレベル（renovate.ymlのinputから取得）
@@ -61,12 +63,12 @@ module.exports = {
   gitAuthor: "Renovate Bot <renovate@example.com>",
   
   // セキュリティ設定
-  allowedPostUpgradeCommands: [],
-  allowCustomCrateRegistries: false,
-  allowScripts: false,
+  // allowedPostUpgradeCommands: [],
+  // allowCustomCrateRegistries: false,
+  // allowScripts: false,
   
   // キャッシュ設定
-  cacheDir: "/tmp/renovate-cache",
+  // cacheDir: "/tmp/renovate-cache",
   
   // Bundler用の環境変数設定
   env: {
