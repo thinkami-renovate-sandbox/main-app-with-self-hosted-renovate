@@ -39,15 +39,4 @@
   
   // タイムゾーン設定（日本時間）
   timezone: "Asia/Tokyo",
-  
-  // Bundlerでprivateリポジトリを参照する場合の設定
-  //hostRules: [
-  //  {
-  //    matchHost: "github.com",
-  //    hostType: "github"
-  //  }
-  //],
-  
-  // BundlerがGit認証を使用できるようにする
-  //gitUrl: "auth"
 }

@@ -9,53 +9,53 @@ module.exports = {
   // リポジトリの設定（RENOVATE_REPOSITORIESから取得）
   repositories: process.env.RENOVATE_REPOSITORIES ? [process.env.RENOVATE_REPOSITORIES] : ["owner/repo"],
   
-  // すべて実行する
-  mode: "full",
+  // // すべて実行する
+  // mode: "full",
 
-  // ベース設定を継承
-  extends: [
-    "config:recommended"
-  ],
+  // // ベース設定を継承
+  // extends: [
+  //   "config:recommended"
+  // ],
 
-  // automergeを無効化
-  automerge: false,
+  // // automergeを無効化
+  // automerge: false,
   
-  // パッケージルール
-  packageRules: [
-    {
-      // すべてのパッケージに対して
-      matchPackageNames: ["*"],
+  // // パッケージルール
+  // packageRules: [
+  //   {
+  //     // すべてのパッケージに対して
+  //     matchPackageNames: ["*"],
       
-      // メジャーアップデートを無効化
-      matchUpdateTypes: ["major"],
-      enabled: false
-    },
-    {
-      // すべてのパッケージに対して
-      matchPackageNames: ["*"],
+  //     // メジャーアップデートを無効化
+  //     matchUpdateTypes: ["major"],
+  //     enabled: false
+  //   },
+  //   {
+  //     // すべてのパッケージに対して
+  //     matchPackageNames: ["*"],
       
-      // マイナー・パッチアップデートのみ有効
-      matchUpdateTypes: ["minor", "patch"],
-      enabled: true
-    }
-  ],
+  //     // マイナー・パッチアップデートのみ有効
+  //     matchUpdateTypes: ["minor", "patch"],
+  //     enabled: true
+  //   }
+  // ],
   
-  // プルリクエストの設定
-  prConcurrentLimit: 4,
-  prHourlyLimit: 4,
+  // // プルリクエストの設定
+  // prConcurrentLimit: 4,
+  // prHourlyLimit: 4,
   
-  // タイムゾーン設定（日本時間）
-  timezone: "Asia/Tokyo",
+  // // タイムゾーン設定（日本時間）
+  // timezone: "Asia/Tokyo",
   
   // Self-hosted runner用の追加設定
   onboarding: true,
   requireConfig: "optional",
   
-  // ログレベル（renovate.ymlのinputから取得）
-  logLevel: process.env.LOG_LEVEL || "info",
+  // // ログレベル（renovate.ymlのinputから取得）
+  // logLevel: process.env.LOG_LEVEL || "info",
   
-  // ドライラン設定（renovate.ymlのinputから取得）
-  dryRun: process.env.RENOVATE_DRY_RUN === 'true' ? 'full' : null,
+  // // ドライラン設定（renovate.ymlのinputから取得）
+  // dryRun: process.env.RENOVATE_DRY_RUN === 'true' ? 'full' : null,
   
   // Git設定
   gitAuthor: "Renovate Bot <renovate@example.com>",
